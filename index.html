@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>R6 Outfit Previewer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div>
+    <h1>R6 Outfit Previewer</h1>
+    <p>Preview classic Roblox R6 clothing, hide/show individual limbs, and inspect Roblox item IDs/links.</p>
+  </div>
+  <a class="github" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+</header>
+
+<main>
+  <section class="viewer card">
+    <div class="toolbar">
+      <button id="resetView">Reset camera</button>
+      <button id="frontView">Front</button>
+      <button id="backView">Back</button>
+      <label>Background <input id="bg" type="color" value="#20242c"></label>
+    </div>
+    <div id="stage"></div>
+    <div class="hint">Drag = rotate · Wheel = zoom · Right drag = pan</div>
+  </section>
+
+  <aside>
+    <section class="card">
+      <h2>Body visibility</h2>
+      <div class="limbs">
+        <label><input type="checkbox" data-part="Head" checked> Head</label>
+        <label><input type="checkbox" data-part="Torso" checked> Torso</label>
+        <label><input type="checkbox" data-part="Left Arm" checked> Left arm</label>
+        <label><input type="checkbox" data-part="Right Arm" checked> Right arm</label>
+        <label><input type="checkbox" data-part="Left Leg" checked> Left leg</label>
+        <label><input type="checkbox" data-part="Right Leg" checked> Right leg</label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Classic shirt template</h2>
+      <p class="muted">Upload a Roblox classic shirt template image (PNG/JPG). The preview uses the standard classic-shirt UV layout.</p>
+      <input id="shirtFile" type="file" accept="image/png,image/jpeg">
+      <button class="secondary" id="clearShirt">Clear shirt</button>
+    </section>
+
+    <section class="card">
+      <h2>Classic pants template</h2>
+      <p class="muted">Upload a Roblox classic pants template image (PNG/JPG).</p>
+      <input id="pantsFile" type="file" accept="image/png,image/jpeg">
+      <button class="secondary" id="clearPants">Clear pants</button>
+    </section>
+
+    <section class="card">
+      <h2>Roblox item</h2>
+      <p class="muted">Paste a catalog/marketplace URL or an asset ID. The app identifies the ID and loads the public Roblox thumbnail. Browser-only pages cannot reliably download private/unsupported Roblox asset data, so the item is shown in the item tray rather than silently pretending it has been applied.</p>
+      <div class="row">
+        <input id="assetInput" placeholder="e.g. 123456789 or roblox.com/catalog/123456789/...">
+        <button id="addAsset">Add</button>
+      </div>
+      <div id="assetStatus" class="status"></div>
+      <div id="items"></div>
+    </section>
+
+    <section class="card">
+      <h2>Save / load</h2>
+      <button id="saveProject">Export project JSON</button>
+      <label class="fileButton">Import project JSON<input id="loadProject" type="file" accept="application/json"></label>
+    </section>
+  </aside>
+</main>
+
+<footer>
+  <span>Personal-use static site · No Roblox login or password is requested.</span>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
